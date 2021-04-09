@@ -4,7 +4,7 @@ module Exercise
       def replace(array)
         max = 0
         array.each { |num| max = num if num > max }
-        array.map! { |num| num.positive? ? max : num }
+        array.map { |num| num.positive? ? max : num }
       end
 
       def search(array, query, left = 0, right = nil)
