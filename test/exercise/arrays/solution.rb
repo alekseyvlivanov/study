@@ -16,7 +16,7 @@ module Exercise
 
         if query < array[middle]
           right = middle - 1
-        elsif query
+        else
           left = middle + 1
         end
         search(array, query, left, right)
