@@ -5,10 +5,13 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each
-        0.upto(length - 1) do |idx|
-          yield(self[idx])
-        end
+      def my_each(&blk)
+        return if empty?
+
+        first, *rest = self
+        blk.call(first)
+        MyArray.new(rest).my_each(&blk)
+
         self
       end
 
