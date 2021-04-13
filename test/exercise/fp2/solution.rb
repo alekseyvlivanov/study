@@ -30,17 +30,13 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce(acc = nil)
-        if acc.nil?
-          acc = self[0]
-          start = 1
-        else
-          start = 0
-        end
-        start.upto(length - 1) do |idx|
-          acc = yield(acc, self[idx])
-        end
-        acc
+      def my_reduce(acc = nil, &blk)
+        return acc if empty?
+
+        first, *rest = self
+        acc = acc.nil? ? first : blk.call(acc, first)
+
+        MyArray.new(rest).my_reduce(acc, &blk)
       end
     end
   end
