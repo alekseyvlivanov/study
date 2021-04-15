@@ -24,9 +24,9 @@ module Exercise
 
       # Написать свою функцию my_compact
       def my_compact
-        arr = MyArray.new
-        my_each { |el| arr << el unless el.nil? }
-        arr
+        return if empty?
+
+        my_reduce(MyArray.new) { |acc, el| el.nil? ? acc : acc << el }
       end
 
       # Написать свою функцию my_reduce
